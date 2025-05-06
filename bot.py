@@ -4,6 +4,7 @@ from telegram.ext import (
     ConversationHandler, ContextTypes, filters
 )
 from datetime import datetime
+import os
 
 # Estados
 NAME, SEG, STRUCTURE_TYPE, STRUCTURE, PARCELAS, START_TIME, END_TIME, ACTIVIDADES = range(8)
@@ -137,7 +138,7 @@ async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE):
     return ConversationHandler.END
 
 def main():
-    TOKEN = "AQUÍ_VA_TU_TOKEN"  # Reemplaza con tu token real
+    TOKEN = os.getenv("TOKEN")
 
     app = ApplicationBuilder().token(TOKEN).build()
 
