@@ -66,8 +66,8 @@ async def get_structure(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def get_parcelas(update: Update, context: ContextTypes.DEFAULT_TYPE):
     parcelas = update.message.text.strip()
-    if not parcelas.isdigit() or int(parcelas) <= 0:
-        await update.message.reply_text("Por favor ingresa un número válido de parcelas (mayor a 0).")
+    if not parcelas.isdigit() or int(parcelas) < 0:
+        await update.message.reply_text("Por favor ingresa un número válido de parcelas (mayor o igual 0).")
         return PARCELAS
 
     context.user_data["parcelas"] = parcelas
